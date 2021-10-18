@@ -9,8 +9,12 @@ from django.contrib import messages
 
 @login_required(login_url='/login/')
 def evento(request):
-    return render(request, 'evento.html')
-
+    id_evento = request.GET.get('id')
+    #print(id_evento)
+    dados ={}
+    if id_evento:
+        dados['evento'] = Evento.objects.get(id=id_evento)
+    return render(request, 'evento.html', dados)
 
 '''
 def index(request):
@@ -56,10 +60,36 @@ def submit_evento(request):
         descricao = request.POST.get('descricao')
         local = request.POST.get('local')
         usuario = request.user
-        Evento.objects.create(titulo=titulo,
+        id_evento = request.POST.get('id_evento')
+        if id_evento:
+            evento = Evento.objects.get(id=id_evento)
+            if evento.usuario == usuario:
+                evento.titulo = titulo
+                evento.descricao = descricao
+                evento.data_evento = data_evento
+                evento.local = local
+                evento.save()
+            '''
+            Evento.objects.filter(id=id_evento).update(titulo=titulo,
+                                                       data_evento=data_evento,
+                                                       descricao=descricao,
+                                                       local=local,
+                                                       usuario=usuario)
+            '''
+        else:
+            Evento.objects.create(titulo=titulo,
                               data_evento=data_evento,
                               descricao=descricao,
                               local=local,
                               usuario=usuario
                               )
+    return redirect('/')
+
+
+@login_required(login_url='/login/')
+def delete_evento(request, id_evento):
+    usuario = request.user
+    evento = Evento.objects.get(id=id_evento)
+    if usuario == evento.usuario:
+        evento.delete()
     return redirect('/')
