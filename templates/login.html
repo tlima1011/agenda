@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Pagina de login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Login</h1>
+    <div align="center">
+        <h1><i>Login</i></h1>
+    </div>
     <form action ="submit" method="post">{% csrf_token %}
         <div align="center">
-            <label>Usuário:</label>
+            <label>Usuário</label>
             <input type="text" name="username">
-            <label>Password:</label>
+            <label>Password</label>
             <input type="password" name="password">
             <button type="submit">Entrar</button>
+            <button type="reset">Apagar</button>
         </div>
     </form>
     {% for message in messages %}
