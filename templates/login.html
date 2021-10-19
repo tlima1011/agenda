@@ -7,7 +7,8 @@
 </head>
 <body>
     <div align="center">
-        <h1><i>Login</i></h1>
+        <hr>
+        <h1 font face="Montserrat"><i>Login</i></h1>
     </div>
     <form action ="submit" method="post">{% csrf_token %}
         <div align="center">
@@ -17,10 +18,11 @@
             <input type="password" name="password">
             <button type="submit">Entrar</button>
             <button type="reset">Apagar</button>
+            <hr>
         </div>
     </form>
     {% for message in messages %}
-        <div align="center">
+        <div align="center" font face="Montserrat">
             <strong>Erro: </strong>{{ message }}
         </div>
     {% endfor %}

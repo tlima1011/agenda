@@ -1,11 +1,11 @@
 {% extends "model-page.html" %}
 
 {% block content %}
-    <h2>Agendamentos</h2>
+    <h2 font face="Montserrat" style="border:2px solid MediumSeaGreen;"><i>Compromissos</i></h2>
     <a href="/agenda/evento/">
         <button type="button">Novo Evento</button>
     </a>
-    <ul style="font-size: 18px">
+    <ul style="font-size: 19px" font face="geneva" type="circle">
         {% for evento in eventos %}
             <li>
                 <div style={% if evento.get_evento_atrasado %}
@@ -15,6 +15,7 @@
                     ( <a href="evento/?id={{ evento.id }}">Editar</a> /
                      <a href="evento/delete/{{ evento.id }}/ ">Excluir</a> )
                 </div>
+                <br>
             </li>
         {% endfor%}
     </ul>
