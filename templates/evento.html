@@ -4,21 +4,20 @@
 {% block content %}
     <h2 font face="Montserrat"><i>Evento</i></h2>
     <form action="submit" method="POST"> {% csrf_token %}
-        <label>Titulo: </label>
+        <label font face="Arial"><i>Titulo: </i></label>
         <br>
         <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
+        <input type="text" name="titulo" size="23" value="{{ evento.titulo }}" placeholder="Titulo da Agenda">
         <br>
-        <input type="text" name="titulo" size="23" value="{{ evento.titulo }}" placeholder="Titulo do Agenda">
-        <br>
-        <label>Data do Evento: </label>
+        <label><i>Data do Evento:</i></label>
         <br>
         <input type="datetime-local" name="data_evento" value="{{evento.get_data_input_evento}}">
         <br>
-        <label>Descricao:</label>
+        <label><i>Descricao:</i></label>
         <br>
         <textarea name = "descricao" rows="5" cols="23" placeholder="Descrição e observação do evento">{{evento.descricao}}</textarea>
         <br>
-        <label>Local:</label>
+        <label><i>Local:</i></label>
         <br>
         <input type="text" name="local" size="23" value="{{evento.local}}" placeholder="Local do Evento">
         <br><br>
