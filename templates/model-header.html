@@ -1,10 +1,14 @@
-
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'img/agenda-icone.jpg' %}"/>
     <meta charset="UTF-8">
     <title>Agenda</title>
     <div align="right">
-        <a href="/logout">logout</a>
+        <a href="/logout" class="link-danger"><b>logout</b></a>
     </div>
     <div align="center">
-        <h1 font face="Montserrat">Agenda</h1>
-        <hr>
+        <img src="{% static 'img/agenda-icone.png'%}" alt="Logotipo do Calendário" width="225" height="80">
     </div>
+    <hr>
+
